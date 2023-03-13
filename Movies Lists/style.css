@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+:root{
+    --whitecol: #e5eaf5;
+    --lblue: #a0d2eb;
+    --mpurple: #d08df4;
+    --dpurple: #8458b3;
+    --dark: #494d5f;
+}
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: nunito;
+    background: linear-gradient(to left,var(--dark),var(--mpurple));
+    padding-top: 10px;
+}
+a{
+    text-decoration: none;
+    color:var(--whitecol);
+}
+ul{
+    position: relative;
+    width: 100vw;
+    color:var(--whitecol);
+    display: flex;
+    justify-content: space-evenly;
+    list-style-type: none;
+    margin-bottom: 20px;
+}
+ul::after{
+    position: absolute;
+    content: '';
+    background-color:var(--whitecol);
+    height: 2px;
+    width: 100%;
+    top: 30px;
+}
+
+.container{
+    padding-top: 30px;
+    max-width: 70vw;
+    background-color:var(--dpurple);
+    display: flex;
+    margin: 0 auto;
+    text-align: center;
+    justify-content: center;
+    border-radius: 10px;
+}
+.container-card{
+    width: 80%;
+}
+.card{
+    position: relative;
+
+    width: 100%;
+    height: 200px;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+.card-section-2{
+    text-align: left;
+}
+.card-buttons{
+    height: 100%;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.card-buttons button{
+    
+    margin: 5px;;
+    width: 100px;
+    height: 50px;
+    border-radius: 20px;
+    color:var(--whitecol);
+    background: none;
+    border:var(--lblue) solid 3px;
+}
+.card img{
+    border-radius: 10px;
+    border: solid var(--lblue) 2px;
+}
+.title{
+    color:var(--whitecol);
+    font-size: 1.5em;
+    font-weight: 800;
+}
+.descr{
+    color:var(--whitecol);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media only screen and (max-width: 600px) {
+    .container {max-width: 100vw;}
+}
+
