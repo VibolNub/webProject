@@ -1,0 +1,58 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Kantumruy+Pro&display=swap'); */
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: kantumruy pro;
+}
+.container{
+    text-align: center;
+}
+.topbar{
+    position: absolute;
+    display: block;
+    width: 100vw;
+    background-color: white;
+}
+.midcontainer{
+    height: 100vh;
+    background-color: #00A86D;
+    display: flex;
+    padding: 20px;
+    justify-content: center;
+    padding-top: 140px;
+}
+.innercontainer{
+    position: absolute;
+    text-align: center;
+    background-color: white;
+    width: 900px;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: -23px 22px 25px -3px rgba(0,0,0,.2);
+}
+.title{
+    color: #00A86D;
+    font-weight: 800;
+    font-size: 2em;
+}
+.searchTab{
+    padding: 20px;
+}
+.searchTab input{
+    padding: 10px;
+    font-size: 1.2em;
+    border-radius: 10px;
+ 
+    outline: none;
+}
+#searchbox{
+    border: #00A86D 2px solid;
+    width: 400px;
+}
+#searchbtn{
+    background-color: #00A86D;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
