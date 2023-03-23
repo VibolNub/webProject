@@ -15,13 +15,43 @@
         </div>
         <div class="midcontainer">
             <div class="innercontainer">
-                <div class="title">កម្មវិធីព្យាករណ៍អាកាសធាតុ</div>
+                <div class="title">កម្មវិធីព្យាករណ៍អាកាសធាតុក្នុងប្រទេសកម្ពុជា</div>
                 <div class="searchTab">
-                    <input type="search" id="searchbox" placeholder="បញ្ចូលឈ្មោះទីក្រុងជាភាសាអង់គ្លេស...">
-                    <input type="button"  id="searchbtn" value="ស្វែងរក">
+                    <input type="search" id="searchbox" placeholder="បញ្ចូលឈ្មោះខេត្តក្រុងជាភាសាអង់គ្លេស...">
+                    <input type="button"  id="searchbtn" value="ស្វែងរក" onclick="search()">
                 </div>
             </div>
         </div>
     </div>
+
+    <script>
+
+
+
+        
+        const url = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
+        var cityName;
+        const key = "&appid=7543369bf03121a1ae9521a5c827e0f8"
+function search(cityName){
+
+    //fetch('https://api.openweathermap.org/data/2.5/weather?units=metric&q=phnom%20penh&appid=7543369bf03121a1ae9521a5c827e0f8')
+    cityName = document.getElementById('searchbox').value;
+    
+    durl = url+cityName+key;
+    if(durl.s= === undefined){
+        alert("undefin hx")
+    }
+    else{
+        alert(durl)
+    }
+    
+    fetch(durl)
+    .then(res => res.json())
+    .then(data =>alert(data.name));
+
+
+    
+}
+    </script>
 </body>
 </html>
