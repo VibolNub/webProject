@@ -49,10 +49,50 @@
 #searchbox{
     border: #00A86D 2px solid;
     width: 400px;
+    color: #00A86D;
 }
 #searchbtn{
     background-color: #00A86D;
     color: white;
     border: none;
     cursor: pointer;
+}
+#notFound{
+    display: none;
+    font-size: 1.5em;
+    background-color: red;
+    border-radius: 20px;
+    padding: 15px;
+    color: white;
+    transition: ease-in-out 100ms;
+}
+#Found{
+    display: block;
+    font-size: 1.5em;
+    background-color: #00A86D;
+    border-radius: 20px;
+    padding: 15px;
+    color: white;
+    transition: ease-in-out 100ms;
+}
+
+.topContainer{
+    display: flex;
+    justify-content: space-around;
+}
+.middleContainer{
+    font-size: 3em;   
+}
+.bottomContainer{
+    display: flex;
+    justify-content: space-between;
+    /* background-color: #1a6e51; */
+    background-color: #fff;
+    color: #00A86D;
+    padding: 10px;
+    border-radius: 10px;
+    
+}
+h6{
+    padding: 5px;
 }

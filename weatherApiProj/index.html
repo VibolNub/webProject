@@ -15,43 +15,108 @@
         </div>
         <div class="midcontainer">
             <div class="innercontainer">
-                <div class="title">កម្មវិធីព្យាករណ៍អាកាសធាតុក្នុងប្រទេសកម្ពុជា</div>
+                <div class="title">កម្មវិធីព្យាករណ៍អាកាសធាតុក្នុងនិងក្រៅប្រទេស</div>
                 <div class="searchTab">
                     <input type="search" id="searchbox" placeholder="បញ្ចូលឈ្មោះខេត្តក្រុងជាភាសាអង់គ្លេស...">
-                    <input type="button"  id="searchbtn" value="ស្វែងរក" onclick="search()">
+                    <input type="button"  id="searchbtn" value="ស្វែងរក" onclick="start()">
+                </div>
+                <div id="notFound">
+                    <h4>មិនមានឈ្មោះទីក្រុងនេះទេ!</h4>
+                    <h4>សូមបញ្ចូលឈ្មោះទីក្រុងសាជាថ្មី</h4>
+                </div>
+                <div id="Found">
+                    <div class="topContainer">
+                        <div class="left" style="text-align: left;">
+                            <h6>ទីក្រុង៖ <span id="cityName">ភ្នំពេញ</span></h6>
+                            <h6>ប្រទេស៖ <span id="countryName">កម្ពុជា</span></h6>
+                        </div>
+                        <div class="right" style="text-align: right;">
+                            <h6>រយៈបណ្តោយ៖ <span id="longitute">101</span></h6>
+                            <h6>រយៈទទឹង៖ <span id="latitute">203</span></h6>
+                        </div>
+                    </div>
+
+                    <div class="middleContainer">
+                        <h1 id="temp">2°</h1>
+                    </div>
+                    <div class="bottomContainer">
+                        <div class="left" style="text-align: left;">
+                            <h6>ល្បឿនខ្យល់</h6>
+                            <h6><span id="windSpeed">20</span>KHM/h</h6>
+                        </div>
+                        <div class="right" style="text-align: right;">
+                            <h6>ស្ថានភាពអាកាសធាតុ</h6>
+                            <h6><span id="clouds">នៅរាយប៉ាយ(scatter cloud)</span></h6>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
+        const regionNamesInEnglish = new Intl.DisplayNames(['en'], { type: 'region' });
+        //console.log(regionNamesInEnglish.of('KH'));
 
 
+        async function start(){
+            var city = document.getElementById('searchbox').value;
+            searchUrl = 'https://api.openweathermap.org/data/2.5/weather?units=metric&q='+city+'&appid=7543369bf03121a1ae9521a5c827e0f8';
 
-        
-        const url = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
-        var cityName;
-        const key = "&appid=7543369bf03121a1ae9521a5c827e0f8"
-function search(cityName){
+            const respone = await fetch(searchUrl);
+            if(respone.ok){
+                const data = await respone.json();
+                console.log(data);
 
-    //fetch('https://api.openweathermap.org/data/2.5/weather?units=metric&q=phnom%20penh&appid=7543369bf03121a1ae9521a5c827e0f8')
-    cityName = document.getElementById('searchbox').value;
-    
-    durl = url+cityName+key;
-    if(durl.s= === undefined){
-        alert("undefin hx")
-    }
-    else{
-        alert(durl)
-    }
-    
-    fetch(durl)
-    .then(res => res.json())
-    .then(data =>alert(data.name));
+                document.getElementById('notFound').style.display = 'none'
+                document.getElementById('Found').style.display = 'block';
+
+                document.getElementById('cityName').innerHTML = data.name;
+                document.getElementById('longitute').innerHTML = data.coord.lon;
+                document.getElementById('latitute').innerHTML = data.coord.lat;
+                document.getElementById('temp').innerHTML = Math.round(data.main.temp * 10)/10 + "°";
+                document.getElementById('windSpeed').innerHTML = Math.round(data.wind.speed * 10)/10;
+
+                if(data.weather[0].description =="Clouds"){
+                    document.getElementById('clouds').innerHTML = "ពពកច្រើន";
+                }
+                else if(data.weather[0].description =="Thunderstorm"){
+                    document.getElementById('clouds').innerHTML = "ភ្លៀងខ្លាំង";
+                }
+                else if(data.weather[0].description =="Clear"){
+                    document.getElementById('clouds').innerHTML = "មេឃស្រឡះ";
+                }
+                
+                else if(data.weather[0].description =="Snow"){
+                    document.getElementById('clouds').innerHTML = "ធ្លាក់ព្រឹល";
+                }
+                else if(data.weather[0].description =="Rain"){
+                    document.getElementById('clouds').innerHTML = "មានភ្លៀង";
+                }
+                else if(data.weather[0].description =="Drizzle"){
+                    document.getElementById('clouds').innerHTML = "រលឹម";
+                }
+                else{
+                    document.getElementById('clouds').innerHTML = "ចុះអ័ព្ទ";
+                }
+                
 
 
-    
-}
+                if(data.sys.country == "KH"){
+                    document.getElementById('countryName').innerHTML = "កម្ពុជា";
+                }
+                else{
+                    document.getElementById('countryName').innerHTML = regionNamesInEnglish.of(data.sys.country);
+                }
+
+            }
+            else{
+                document.getElementById('notFound').style.display = 'block'
+                document.getElementById('Found').style.display = 'none';
+            }
+            
+            
+        }
     </script>
 </body>
 </html>
