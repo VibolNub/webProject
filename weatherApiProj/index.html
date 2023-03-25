@@ -18,7 +18,7 @@
                 <div class="title">កម្មវិធីព្យាករណ៍អាកាសធាតុក្នុងនិងក្រៅប្រទេស</div>
                 <div class="searchTab">
                     <input type="search" id="searchbox" placeholder="បញ្ចូលឈ្មោះខេត្តក្រុងជាភាសាអង់គ្លេស...">
-                    <input type="button"  id="searchbtn" value="ស្វែងរក" onclick="start()">
+                    <input type="button"  id="searchbtn" value="ស្វែងរក" onclick="start()" onkeypress="enterPressed(event)">
                 </div>
                 <div id="notFound">
                     <h4>មិនមានឈ្មោះទីក្រុងនេះទេ!</h4>
@@ -51,6 +51,7 @@
                     </div>
                 </div>
             </div>
+            <footer>© 2023 License, Legal Line, a School Project. All rights reserved. Vibol Nub</footer>
         </div>
     </div>
 
@@ -58,6 +59,13 @@
         const regionNamesInEnglish = new Intl.DisplayNames(['en'], { type: 'region' });
         //console.log(regionNamesInEnglish.of('KH'));
 
+        var input = document.getElementById("searchbox");
+        input.addEventListener("keypress", function(event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            start();
+        }
+        });
 
         async function start(){
             var city = document.getElementById('searchbox').value;
@@ -76,27 +84,20 @@
                 document.getElementById('latitute').innerHTML = data.coord.lat;
                 document.getElementById('temp').innerHTML = Math.round(data.main.temp * 10)/10 + "°";
                 document.getElementById('windSpeed').innerHTML = Math.round(data.wind.speed * 10)/10;
-
-                if(data.weather[0].description =="Clouds"){
+                //alert(data.weather[0].main);
+                if (data.weather[0].main =="Clouds"){
                     document.getElementById('clouds').innerHTML = "ពពកច្រើន";
-                }
-                else if(data.weather[0].description =="Thunderstorm"){
+                }else if (data.weather[0].main =="Thunderstorm"){
                     document.getElementById('clouds').innerHTML = "ភ្លៀងខ្លាំង";
-                }
-                else if(data.weather[0].description =="Clear"){
+                }else if (data.weather[0].main =="Clear"){
                     document.getElementById('clouds').innerHTML = "មេឃស្រឡះ";
-                }
-                
-                else if(data.weather[0].description =="Snow"){
+                }else if (data.weather[0].main =="Snow"){
                     document.getElementById('clouds').innerHTML = "ធ្លាក់ព្រឹល";
-                }
-                else if(data.weather[0].description =="Rain"){
+                }else if (data.weather[0].main =="Rain"){
                     document.getElementById('clouds').innerHTML = "មានភ្លៀង";
-                }
-                else if(data.weather[0].description =="Drizzle"){
+                }else if (data.weather[0].main =="Drizzle"){
                     document.getElementById('clouds').innerHTML = "រលឹម";
-                }
-                else{
+                }else {
                     document.getElementById('clouds').innerHTML = "ចុះអ័ព្ទ";
                 }
                 

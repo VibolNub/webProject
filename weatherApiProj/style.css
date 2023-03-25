@@ -1,9 +1,9 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Kantumruy+Pro&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: kantumruy pro;
+    font-family: 'Kantumruy Pro', sans-serif;
 }
 .container{
     text-align: center;
@@ -50,12 +50,14 @@
     border: #00A86D 2px solid;
     width: 400px;
     color: #00A86D;
+    font-weight: 500;
 }
 #searchbtn{
     background-color: #00A86D;
     color: white;
     border: none;
     cursor: pointer;
+
 }
 #notFound{
     display: none;
@@ -67,13 +69,13 @@
     transition: ease-in-out 100ms;
 }
 #Found{
-    display: block;
-    font-size: 1.5em;
+    display: none;
+    font-size: 2em;
     background-color: #00A86D;
     border-radius: 20px;
     padding: 15px;
     color: white;
-    transition: ease-in-out 100ms;
+    transition: ease-in-out 500ms;
 }
 
 .topContainer{
@@ -96,3 +98,62 @@
 h6{
     padding: 5px;
 }
+footer{
+    position: absolute;
+    color: white;
+    bottom: 0;
+    background-color: #00A86D;
+    width: 100vw;
+    padding: 15px;
+}
+
+
+
+
+@media screen and (min-width: 500px) {
+    .midcontainer {
+        background-color: #00A86D;
+      }
+      footer{
+          background-color: #fff;
+          color: #00A86D;
+      }
+      .innercontainer{
+        min-width: 500px;
+        max-width: 600px;
+    }
+  }
+@media screen and (min-width: 800px) {
+    .midcontainer {
+      background-color: #00A86D;
+    }
+    footer{
+        background-color: #fff;
+        color: #00A86D;
+    }
+    .innercontainer{
+        width: 600px;
+    }
+  }
+
+  @media (max-width: 500px ) {
+    .midcontainer {
+        background-color: #00A86D;
+      /* background-color: #00A86D; */
+      width: 500px;
+      font-size: .7em;
+    }
+    footer{
+        background-color: #fff;
+        color: #00A86D;
+    }
+    .innercontainer{
+        width: 412px;
+    }
+    #searchbox{
+        width: 250px;
+        margin-right: 20px;
+    }
+  }
+
+  
