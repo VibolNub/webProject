@@ -68,6 +68,9 @@
     color: white;
     transition: ease-in-out 100ms;
 }
+#notFound h4{
+    padding: 010px ;
+}
 #Found{
     display: none;
     font-size: 2em;
@@ -107,53 +110,41 @@ footer{
     padding: 15px;
 }
 
-
-
-
-@media screen and (min-width: 500px) {
-    .midcontainer {
+/* medium */
+  @media screen and (max-width: 1007px) {
+    .midcontainer{
         background-color: #00A86D;
-      }
-      footer{
-          background-color: #fff;
-          color: #00A86D;
-      }
-      .innercontainer{
-        min-width: 500px;
-        max-width: 600px;
-    }
-  }
-@media screen and (min-width: 800px) {
-    .midcontainer {
-      background-color: #00A86D;
-    }
-    footer{
-        background-color: #fff;
-        color: #00A86D;
     }
     .innercontainer{
+        margin-top: 100px;
         width: 600px;
     }
   }
 
-  @media (max-width: 500px ) {
-    .midcontainer {
+  /* small */
+  @media screen and (max-width: 640px) {
+    .midcontainer{
         background-color: #00A86D;
-      /* background-color: #00A86D; */
-      width: 500px;
-      font-size: .7em;
-    }
-    footer{
-        background-color: #fff;
-        color: #00A86D;
+        font-size: 0.8em;
     }
     .innercontainer{
-        width: 412px;
+        margin-top: 50px;
+        width: 450px;
+    }
+    .title{
+        font-size: 3em;
     }
     #searchbox{
-        width: 250px;
-        margin-right: 20px;
+        width: 300px;
+        margin:25px 0;
     }
+    #temp{
+        padding: 25px 0;
+    }
+    #notFound h4{
+        font-size: 1.3em;
+        padding: 010px ;
+    }
+    
+    
   }
-
-  
